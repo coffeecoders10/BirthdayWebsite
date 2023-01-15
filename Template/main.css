@@ -7,3 +7,21 @@
   justify-content: center;
   align-items: center;
 }
+
+.text-input{
+  background-color:transparent;
+  resize: none;
+  overflow: hidden;
+  /* border:none !important; */
+}
+
+.text-input:active,.text-input:focus,.text-input:read-only{
+  background-color:transparent;
+  /* border:none !important; */
+}
+
+.images{
+  max-height: 50vh;
+  max-width: 50vw;
+}
+  
