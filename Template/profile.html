@@ -15,69 +15,112 @@
   <body>
     <div class="container-fluid full bg-dark centering text-white">
       <form class="container" action="login.html" method="post">
-        <div class="row">
-          <div class="col-12 centering mb-4">
-            <h4>Full Name</h4>
+        <div class="row" id="profile-container">
+          <div class="col-12 centering mb-2">
+            <h1>Full Name</h1>
           </div>
-          <div class="col-12 centering mb-4 text-container">
-            <div class="container">
-              <div class="input-group mb-3">
-                <textarea class="form-control text-input" style="border: 2px solid #ffffff; color: #ffffff; font-size:18px; text-align:center"> </textarea>
-              </div>
-              <div class="preview-remove">
-                <div class="row">
-                  <div class="col-4">
-                    <span>Align: &nbsp;</span>
-                    <select class="" name="">
-                      <option value="">A</option>
-                      <option value="">B</option>
-                    </select>
-                  </div>
-                  <div class="col-4">
-                    <span>Font: &nbsp;</span>
-                    <select class="" name="">
-                      <option value="">A</option>
-                      <option value="">B</option>
-                    </select>
-                  </div>
-                  <div class="col-4">
-                    <span>Border: &nbsp;</span>
-                    <select class="" name="">
-                      <option value="">A</option>
-                      <option value="">B</option>
-                    </select>
-                  </div>
-                  <div class="col-4">
-                    <span>Background Color: &nbsp;</span>
-                    <input type="text" name="" value="">
-                  </div>
-                  <div class="col-4">
-                    <span>Text Color: &nbsp;</span>
-                    <input type="text" name="" value="">
-                  </div>
-                  <div class="col-4">
-                    <span>Border Color: &nbsp;</span>
-                    <input type="text" name="" value="">
-                  </div>
-                </div>
-              </div>
+          <div class="col-12">
+            <hr style="border:2px solid white" class="mb-5">
+          </div>
+          <div class="col-6 centering mb-5 preview-remove">
+            <button type="button" class="btn add-btn" id="add-text-box">Add Text Box</button>
+          </div>
+          <div class="col-6 centering mb-5 preview-remove">
+            <button type="button" class="btn add-btn" id="add-img-box">Add Media Box</button>
+          </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <hr style="border:2px solid white" class="mb-5">
             </div>
-          </div>
-          <div class="col-12 centering mb-4 image-container">
-            <div class="container">
-              <center><img src="" class="images mb-3 preview-holder"></center>
-              <div class="input-group mb-3 preview-remove">
-                <input type="file" class="form-control uploading" aria-label="Upload">
-              </div>
+            <div class="col-12 centering">
+              <button type="button" class="btn add-btn btn-lg preview">Preview</button>
             </div>
-          </div>
-          <div class="col-12 centering">
-            <button type="button" class="btn btn-primary btn-lg preview">Preview</button>
           </div>
       </form>
+    </div>
+    <div class="col-12 centering mb-4 text-container d-none item" id="text-box">
+      <div class="container">
+        <div class="input-group mb-3">
+          <textarea class="form-control text-input" 
+          style="
+          color: #ffffff; 
+          font-size:18px; 
+          text-align:center; 
+          background-color:transparent;
+          border-width: 2px;
+          border-style: solid;
+          border-color: #ffffff"> </textarea>
+        </div>
+        <div class="preview-remove">
+          <div class="row">
+            <div class="col-4">
+              <span>Align: &nbsp;</span>
+              <select class="attr-value" title="text-align" name="">
+                <option value="left">Left</option>
+                <option value="right">Right</option>
+                <option value="center" selected>Middle</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <span>Font: &nbsp;</span>
+              <select class="attr-value" title="font-size" name="">
+                <option value="4px">4</option>
+                <option value="6px">6</option>
+                <option value="8px">8</option>
+                <option value="10px">10</option>
+                <option value="12px">12</option>
+                <option value="14px">14</option>
+                <option value="16px">16</option>
+                <option value="18px" selected>18</option>
+                <option value="20px">20</option>
+                <option value="22px">22</option>
+                <option value="24px">24</option>
+                <option value="26px">26</option>
+                <option value="28px">28</option>
+                <option value="30px">30</option>
+                <option value="32px">32</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <span>Border: &nbsp;</span>
+              <select class="attr-value" title="border-style" name="">
+                <option value="none">None</option>
+                <option value="solid" selected>Solid</option>
+                <option value="dashed">Dashed</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <span>Background Color: &nbsp;</span>
+              <input class="attr-value" title="background-color" type="text" name="" value="transparent">
+            </div>
+            <div class="col-4">
+              <span>Text Color: &nbsp;</span>
+              <input class="attr-value" title="color" type="text" name="" value="#ffffff">
+            </div>
+            <div class="col-4">
+              <span>Border Color: &nbsp;</span>
+              <input class="attr-value" title="border-color" type="text" name="" value="#ffffff">
+            </div>
+            <div class="col-12 centering">
+              <button type="button" name="button" class="btn btn-danger remove-btn mt-3">Remove</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
+    <div class="col-12 centering mb-4 image-container d-none item" id="img-box">
+      <div class="container text-center">
+        <img src="" class="images mb-3 preview-holder">
+        <div class="input-group mb-3 preview-remove">
+          <input type="file" class="form-control uploading" aria-label="Upload">
+          <div class="col-12 centering mt-3">
+            <button type="button" name="button" class="btn btn-danger remove-btn">Remove</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
