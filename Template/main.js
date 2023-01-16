@@ -88,4 +88,9 @@ $(document).ready(function(){
     $("#profile-container").append(clone)
   });
   
+  $("#bg-change").click(function(){
+    console.log("BGBG");
+    $("#page").css("background-color",$("#bg-color").val());
+  });
+  
 });
