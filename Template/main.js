@@ -12,6 +12,11 @@ function readURLs(input,ele) {
   }
 }
 
+$(document).on("input",".text-input",function(){
+  this.style.height = 'auto'; 
+  this.style.height = (this.scrollHeight) + 'px'; 
+});
+
 $(document).on('change', '.uploading', function () {
   readURLs(this,$(this).parent().parent().find(".preview-holder"));
 });
@@ -65,10 +70,7 @@ $(document).ready(function(){
     }
   });
   
-  $(".text-input").on('input', function () { 
-        this.style.height = 'auto'; 
-        this.style.height = (this.scrollHeight) + 'px'; 
-    });
+  
     
   $(".uploading").change(function() {
     readURL(this,$(this).parent().parent().find(".preview-holder"));
