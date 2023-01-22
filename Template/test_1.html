@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Dynamic Webpage</title>
+    <style>
+      /* CSS for background color */
+      body {
+        background-color: #f2f2f2;
+      }
+      /* CSS for photos and captions */
+      .photo-container {
+        position: relative;
+        width: 100%;
+        text-align: center;
+      }
+      .photo-caption {
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+        font-size: 18px;
+        color: white;
+      }
+      /* CSS for altering photo position */
+      .left {
+        float: left;
+        margin-right: 20px;
+      }
+      .right {
+        float: right;
+        margin-left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to my dynamic webpage!</h1>
+    <div id="photo-container"></div>
+    <button id="add-photo-btn">Add a Photo</button>
+    <button id="change-bg-color-btn">Change Background Color</button>
+
+    <script>
+      // JavaScript for changing background color
+      const changeColorBtn = document.getElementById("change-bg-color-btn");
+      changeColorBtn.addEventListener("click", () => {
+        const color = prompt("Enter a new background color (in hex code or color name)");
+        document.body.style.backgroundColor = color;
+      });
+
+      // JavaScript for adding photos
+      const addPhotoBtn = document.getElementById("add-photo-btn");
+      addPhotoBtn.addEventListener("click", () => {
+        const photoSrc = prompt("Enter the URL of the photo you want to add");
+        const photoCaption = prompt("Enter a caption for the photo");
+        const position = prompt("Enter the position of the photo (left or right)");
+        const photoContainer = document.getElementById("photo-container");
+
+        // Create the elements for the new photo
+        const newPhoto = document.createElement("div");
+        newPhoto.classList.add("photo-container");
+        newPhoto.classList.add(position);
+
+        const newImg = document.createElement("img");
+        newImg.src = photoSrc;
+        newImg.alt = photoCaption;
+
+        const newCaption = document.createElement("div");
+        newCaption.classList.add("photo-caption");
+        newCaption.innerHTML = photoCaption;
+
+        // Create the font size and color inputs
+        const fontSizeInput = document.createElement("input");
+        fontSizeInput.type = "text";
+        fontSizeInput.placeholder = "Enter font size (in pixels)";
+        fontSizeInput.addEventListener("change", (event) => {
+          newCaption.style.fontSize = event.target.value + "px";
+        });
+
+        const fontColorInput = document.createElement

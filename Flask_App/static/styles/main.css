@@ -1,0 +1,31 @@
+.full{
+  min-height: 100vh
+}
+
+.centering{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-input{
+  resize: none;
+  overflow: hidden;
+}
+
+.text-input:active,.text-input:focus,.text-input:read-only{
+  background-color: inherit;
+}
+
+.images{
+  max-height: 50vh;
+  max-width: 50vw;
+}
+
+.add-btn{
+  text-transform: uppercase;
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+}
+  
