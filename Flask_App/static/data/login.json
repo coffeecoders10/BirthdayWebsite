@@ -1,10 +1,37 @@
 [
-  {
-    "user_name": "xyz",
-    "password": "pqr"
-  },
-  {
-    "user_name": "qwertyuiop",
-    "password": "asdfghjkl"
-  }
+    {
+        "id": 0,
+        "user_name": "xyz",
+        "password": "pqr",
+        "data": {
+            "bg_color": "qwqwqwqw",
+            "0": {
+                "text": "mmmm",
+                "textarea": "center",
+                "font_size": "18px",
+                "border_style": "solid",
+                "text_bg_color": "transparent",
+                "text_color": "#ffffff",
+                "border_color": "#ffffff"
+            },
+            "1": {
+                "text": "dddd",
+                "textarea": "center",
+                "font_size": "18px",
+                "border_style": "solid",
+                "text_bg_color": "transparent",
+                "text_color": "#ffffff",
+                "border_color": "#ffffff"
+            },
+            "2": {
+                "image_path": "C:\\Users\\wsarv\\GITS\\BirthdayWebsite\\Flask_App\\static\\data/img_1\\good_old_days.png"
+            }
+        }
+    },
+    {
+        "id": 1,
+        "user_name": "qwertyuiop",
+        "password": "asdfghjkl",
+        "data": []
+    }
 ]

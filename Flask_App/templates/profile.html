@@ -14,7 +14,7 @@
   </head>
   <body>
     <div class="container-fluid full centering text-white" id="page" style="background-color:#292b2c">
-      <form class="container" action="login.html" method="post">
+      <form class="container" action="{{ url_for('profile_post')}}" method="post" enctype="multipart/form-data">
         <div class="row" id="profile-container">
           <div class="col-12 centering mb-2">
             <h1>Full Name</h1>
@@ -24,7 +24,7 @@
           </div>
           <div class="col-12 centering mb-5 preview-remove">
             <div class="input-group mb-3">
-              <input type="text" class="form-control" id="bg-color">
+              <input type="text" class="form-control" name = "bg_color" id="bg-color">
               <div class="input-group-append">
                 <button class="btn btn-light border-dark" type="button" id="bg-change">Change Background</button>
               </div>
@@ -43,9 +43,12 @@
             </div>
             <div class="col-6 centering">
                 <button type="button" class="btn btn-primary btn-lg preview">Preview</button>
-            </div>  
+            </div>
+            {{result.name}}
+            {{result.id}}
+            {{result.data}}
             <div class="col-6 centering">
-                <button type="button" class="btn btn-primary btn-lg">Submit</button>
+                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
             </div>
           </div>
       </form>
@@ -53,7 +56,7 @@
     <div class="col-12 centering mb-4 text-container d-none item" id="text-box">
       <div class="container">
         <div class="input-group mb-3">
-          <textarea rows="1" class="form-control text-input"
+          <textarea rows="1" class="form-control text-input" name = "text[]"
           style="
           color: #ffffff;
           font-size:18px;
@@ -62,13 +65,13 @@
           border-width: 2px;
           border-style: solid;
           border-color: #ffffff;
-          height: 20px"> </textarea>
+          height: 20px"></textarea>
         </div>
         <div class="preview-remove">
           <div class="row">
             <div class="col-4">
               <span>Align: &nbsp;</span>
-              <select class="attr-value" title="text-align" name="">
+              <select class="attr-value" title="text-align" name="text_align[]">
                 <option value="left">Left</option>
                 <option value="right">Right</option>
                 <option value="center" selected>Middle</option>
@@ -76,7 +79,7 @@
             </div>
             <div class="col-4">
               <span>Font: &nbsp;</span>
-              <select class="attr-value" title="font-size" name="">
+              <select class="attr-value" title="font-size" name="font_size[]">
                 <option value="4px">4</option>
                 <option value="6px">6</option>
                 <option value="8px">8</option>
@@ -96,7 +99,7 @@
             </div>
             <div class="col-4">
               <span>Border: &nbsp;</span>
-              <select class="attr-value" title="border-style" name="">
+              <select class="attr-value" title="border-style" name="border_style[]">
                 <option value="none">None</option>
                 <option value="solid" selected>Solid</option>
                 <option value="dashed">Dashed</option>
@@ -104,15 +107,15 @@
             </div>
             <div class="col-4">
               <span>Background Color: &nbsp;</span>
-              <input class="attr-value" title="background-color" type="text" name="" value="transparent">
+              <input class="attr-value" title="background-color" type="text" name="text_bg_color[]" value="transparent">
             </div>
             <div class="col-4">
               <span>Text Color: &nbsp;</span>
-              <input class="attr-value" title="color" type="text" name="" value="#ffffff">
+              <input class="attr-value" title="color" type="text" name="text_color[]" value="#ffffff">
             </div>
             <div class="col-4">
               <span>Border Color: &nbsp;</span>
-              <input class="attr-value" title="border-color" type="text" name="" value="#ffffff">
+              <input class="attr-value" title="border-color" type="text" name="border_color[]" value="#ffffff">
             </div>
             <div class="col-12 centering">
               <button type="button" name="button" class="btn btn-danger remove-btn mt-3">Remove</button>
@@ -125,7 +128,7 @@
       <div class="container text-center">
         <img src="" class="images mb-3 preview-holder">
         <div class="input-group mb-3 preview-remove">
-          <input type="file" class="form-control uploading" aria-label="Upload">
+          <input type="file" class="form-control uploading" aria-label="Upload" name="image[]">
           <div class="col-12 centering mt-3">
             <button type="button" name="button" class="btn btn-danger remove-btn">Remove</button>
           </div>
