@@ -12,6 +12,22 @@ function readURLs(input,ele) {
   }
 }
 
+function colorPickers(){
+  $('.color-input').ColorPicker({
+	onSubmit: function(hsb, hex, rgb, el) {
+		$(el).val("#" + hex);
+		$(el).ColorPickerHide();
+    $(el).trigger("change");
+  	},
+  	onBeforeShow: function () {
+  		$(this).ColorPickerSetColor(this.value);
+  	}
+  })
+  .bind('keyup', function(){
+  	$(this).ColorPickerSetColor(this.value);
+  });
+}
+
 $(document).on("input",".text-input",function(){
   this.style.height = 'auto'; 
   this.style.height = (this.scrollHeight) + 'px'; 
@@ -22,11 +38,11 @@ $(document).on('change', '.uploading', function () {
 });
 
 $(document).on('change', '.attr-value', function () {
-  console.log($(this).prop("title"));
-  console.log($(this).val());
+  // console.log($(this).prop("title"));
+  // console.log($(this).val());
   var property = $(this).prop("title");
   var value = $(this).val();
-  console.log($(this).closest(".container").find('.text-input').first().css(property,value));
+  // console.log($(this).closest(".container").find('.text-input').first().css(property,value));
   // $(this).closest(".container").find(".text-input").prop(property,value);
 });
 
@@ -36,7 +52,6 @@ $(document).on('click', '.remove-btn', function () {
 
 $(document).ready(function(){
   function readURL(input,ele) {
-    console.log("HELLOOOOO");
     if (input.files && input.files[0]) {
       var reader = new FileReader();
       reader.onload = function(e) {
@@ -50,6 +65,8 @@ $(document).ready(function(){
   }
   
   console.log("HELLO Akruti");
+  
+  colorPickers();
   
   $(".preview").click(function(){
     $(".text-input").each(function(){
@@ -81,6 +98,7 @@ $(document).ready(function(){
     clone.removeAttr("id");
     clone.removeClass("d-none");
     $("#profile-container").append(clone)
+    colorPickers();
   });
   
   $("#add-img-box").click(function(){
@@ -91,7 +109,6 @@ $(document).ready(function(){
   });
   
   $("#bg-change").click(function(){
-    console.log("BGBG");
     $("#page").css("background-color",$("#bg-color").val());
   });
   

@@ -4,9 +4,26 @@
         "user_name": "xyz",
         "password": "pqr",
         "data": {
-            "bg_color": "qwqwqwqw",
+            "bg_color": "",
             "0": {
-                "text": "mmmm",
+                "text": "",
+                "textarea": "center",
+                "font_size": "18px",
+                "border_style": "solid",
+                "text_bg_color": "transparent",
+                "text_color": "#c22dc2",
+                "border_color": "#ffffff"
+            }
+        }
+    },
+    {
+        "id": 1,
+        "user_name": "qwertyuiop",
+        "password": "asdfghjkl",
+        "data": {
+            "bg_color": "",
+            "0": {
+                "text": "SDHSDH",
                 "textarea": "center",
                 "font_size": "18px",
                 "border_style": "solid",
@@ -15,7 +32,7 @@
                 "border_color": "#ffffff"
             },
             "1": {
-                "text": "dddd",
+                "text": "asdasd",
                 "textarea": "center",
                 "font_size": "18px",
                 "border_style": "solid",
@@ -24,14 +41,17 @@
                 "border_color": "#ffffff"
             },
             "2": {
-                "image_path": "C:\\Users\\wsarv\\GITS\\BirthdayWebsite\\Flask_App\\static\\data/img_1\\good_old_days.png"
+                "text": "asddddddwdwdwdwd",
+                "textarea": "center",
+                "font_size": "18px",
+                "border_style": "solid",
+                "text_bg_color": "transparent",
+                "text_color": "#ffffff",
+                "border_color": "#ffffff"
+            },
+            "3": {
+                "image_path": "C:\\Users\\NitishTalekar\\Desktop\\Projects\\CoffeeCodersProjects\\BirthdayWebsite\\Flask_App\\static\\data/img_1\\Marvel.png"
             }
         }
-    },
-    {
-        "id": 1,
-        "user_name": "qwertyuiop",
-        "password": "asdfghjkl",
-        "data": []
     }
 ]
