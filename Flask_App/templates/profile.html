@@ -46,12 +46,12 @@
             <div class="col-6 centering">
                 <button type="button" class="btn btn-primary btn-lg preview">Preview</button>
             </div>
-            {{result.name}}
-            {{result.id}}
-            {{result.data}}
             <div class="col-6 centering">
                 <button type="submit" class="btn btn-primary btn-lg">Submit</button>
             </div>
+            {{result.name}}
+            {{result.id}}
+            {{result.data}}
           </div>
       </form>
     </div>
@@ -124,6 +124,7 @@
             </div>
           </div>
         </div>
+        <input type="text" class="ordered" name="order[]" value="">
       </div>
     </div>
     <div class="col-12 centering mb-4 image-container d-none item" id="img-box">
@@ -135,7 +136,7 @@
             <button type="button" name="button" class="btn btn-danger remove-btn">Remove</button>
           </div>
         </div>
-
+        <input type="text" class="ordered" name="order_img[]" value="">
       </div>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->

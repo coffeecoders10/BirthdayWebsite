@@ -73,9 +73,10 @@ def profile_post():
     text_bg_color = request.form.getlist('text_bg_color[]')
     text_color = request.form.getlist('text_color[]')
     border_color = request.form.getlist('border_color[]')
+    order = request.form.getlist('order[]')
 
     n = len(text)
-    order = [i for i in range(n)]
+    # order = [i for i in range(n)]
     for i in range(n):
         current_data[order[i]] = {
             "text": text[i],
@@ -89,7 +90,8 @@ def profile_post():
 
     image = request.files.getlist('image[]')
     l = len(image)
-    order_img = [i for i in range(n, n + l)]
+    # order_img = [i for i in range(n, n + l)]
+    order_img = request.form.getlist('order_img[]')
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER + "/img_1"
     for i in range(l):
         path = os.path.join(app.config['UPLOAD_FOLDER'], image[i].filename)

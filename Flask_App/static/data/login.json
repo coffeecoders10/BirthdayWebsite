@@ -6,13 +6,25 @@
         "data": {
             "bg_color": "",
             "0": {
-                "text": "",
+                "text": "Kya bolti???",
                 "textarea": "center",
                 "font_size": "18px",
                 "border_style": "solid",
                 "text_bg_color": "transparent",
-                "text_color": "#c22dc2",
+                "text_color": "#ffffff",
                 "border_color": "#ffffff"
+            },
+            "2": {
+                "text": "Kaho na kaho",
+                "textarea": "center",
+                "font_size": "18px",
+                "border_style": "solid",
+                "text_bg_color": "transparent",
+                "text_color": "#ffffff",
+                "border_color": "#ffffff"
+            },
+            "1": {
+                "image_path": "C:\\Users\\NitishTalekar\\Desktop\\Projects\\CoffeeCodersProjects\\BirthdayWebsite\\Flask_App\\static\\data/img_1\\Marvel.png"
             }
         }
     },

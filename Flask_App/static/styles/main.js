@@ -51,18 +51,20 @@ $(document).on('click', '.remove-btn', function () {
 });
 
 $(document).ready(function(){
-  function readURL(input,ele) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function(e) {
-        ele.attr('src', e.target.result);
-      }
-      reader.readAsDataURL(input.files[0]);
-    } else {
-      alert('select a file to see preview');
-      ele.attr('src', '');
-    }
-  }
+  // function readURL(input,ele) {
+  //   if (input.files && input.files[0]) {
+  //     var reader = new FileReader();
+  //     reader.onload = function(e) {
+  //       ele.attr('src', e.target.result);
+  //     }
+  //     reader.readAsDataURL(input.files[0]);
+  //   } else {
+  //     alert('select a file to see preview');
+  //     ele.attr('src', '');
+  //   }
+  // }
+  
+  var order_id = 0;
   
   console.log("HELLO Akruti");
   
@@ -86,8 +88,6 @@ $(document).ready(function(){
       $(".preview").html("Preview")
     }
   });
-  
-  
     
   $(".uploading").change(function() {
     readURL(this,$(this).parent().parent().find(".preview-holder"));
@@ -97,14 +97,19 @@ $(document).ready(function(){
     var clone = $("#text-box").clone()
     clone.removeAttr("id");
     clone.removeClass("d-none");
+    clone.find(".ordered").val(order_id);
+    order_id++;
     $("#profile-container").append(clone)
     colorPickers();
+    
   });
   
   $("#add-img-box").click(function(){
     var clone = $("#img-box").clone()
     clone.removeAttr("id");
     clone.removeClass("d-none");
+    clone.find(".ordered").val(order_id);
+    order_id++;
     $("#profile-container").append(clone)
   });
   
