@@ -56,14 +56,45 @@ def logout():
 @app.route('/profile')
 @login_required
 def profile():
-    return render_template("profile.html", result = {"name": users[current_user.id].name, "data": users[current_user.id].data, "id": users[current_user.id].id})
+    static_data = {
+        "align" : {
+            'left' : "Left",
+            'right' : "Right",
+            'center' : "Middle"
+        },
+        'font' : {
+            '4px' : "4",
+            '6px' : "6",
+            '8px' : "8",
+            '10px' : "10",
+            '12px' : "12",
+            '14px' : "14",
+            '16px' : "16",
+            '18px' : "18",
+            '20px' : "20",
+            '22px' : "22",
+            '24px' : "24",
+            '26px' : "26",
+            '28px' : "28",
+            '30px' : "30",
+            '32px' : "32",
+        },
+        'border' : {
+            'none' : 'None',
+            'solid' : 'Solid',
+            'dashed' : 'Dashed'
+        }
+    }
+    return render_template("profile.html", static = static_data, result = {"name": users[current_user.id].name, "data": users[current_user.id].data, "id": users[current_user.id].id})
 
 @app.route('/profile', methods=['POST'])
 @login_required
 def profile_post():
     # current_data = []
     # i = current_user.id
-    bg_color = request.form['bg_color']
+    bg_color = request.form['bg_color'] 
+    if bg_color == "":
+        bg_color = "#292b2c"
     current_data = {"bg_color": bg_color}
 
     text = request.form.getlist('text[]')
@@ -79,8 +110,9 @@ def profile_post():
     # order = [i for i in range(n)]
     for i in range(n):
         current_data[order[i]] = {
+            "type": "text",
             "text": text[i],
-            "textarea": text_align[i],
+            "text_align": text_align[i],
             "font_size": font_size[i],
             "border_style": border_style[i],
             "text_bg_color": text_bg_color[i],
@@ -95,7 +127,7 @@ def profile_post():
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER + "/img_1"
     for i in range(l):
         path = os.path.join(app.config['UPLOAD_FOLDER'], image[i].filename)
-        current_data[order_img[i]] = {"image_path": path}
+        current_data[order_img[i]] = {"image_path": path,"type": "image"}
         image[i].save(path)
 
     users[current_user.id].data = current_data

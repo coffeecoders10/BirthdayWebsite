@@ -15,31 +15,118 @@
     <title>Akruti - Wishes</title>
   </head>
   <body>
-    <div class="container-fluid full centering text-white" id="page" style="background-color:#292b2c">
+    <div class="container-fluid full centering text-white" id="page" style="background-color:{{result.data.bg_color}}">
       <form class="container" action="{{ url_for('profile_post')}}" method="post" enctype="multipart/form-data">
         <div class="row" id="profile-container">
           <div class="col-12 centering mb-2">
-            <h1>Full Name</h1>
+            <h1 class="text-uppercase">{{result.name}}</h1>
+            <input type="text" class="d-none" id="data-length" value="{{result.data|length}}">
           </div>
           <div class="col-12">
             <hr style="border:2px solid white" class="mb-5">
           </div>
           <div class="col-12 centering mb-5 preview-remove">
             <div class="input-group mb-3">
-              <input type="text" class="form-control color-input" name = "bg_color" id="bg-color">
+              <input type="text" class="form-control color-input" name = "bg_color" id="bg-color" value="{{result.data.bg_color}}">
               <div class="input-group-append">
                 <button class="btn btn-light border-dark" type="button" id="bg-change">Change Background</button>
               </div>
             </div>
           </div>
-          <div class="col-6 centering mb-5 preview-remove">
-            <button type="button" class="btn add-btn" id="add-text-box">Add Text Box</button>
-          </div>
-          <div class="col-6 centering mb-5 preview-remove">
-            <button type="button" class="btn add-btn" id="add-img-box">Add Media Box</button>
-          </div>
+          {% for d in result.data %}
+            {% if d == "bg_color" %}
+            {% endif %}
+            {% if result.data[d].type == "text" %}
+            <div class="col-12 centering mb-4 text-container item">
+              <div class="container">
+                <div class="input-group mb-3">
+                  <textarea rows="1" class="form-control text-input" name = "text[]"
+                  style="
+                  border-width: 2px;
+                  height: 20px">{{result.data[d].text}}</textarea>
+                </div>
+                <div class="preview-remove">
+                  <div class="row">
+                    <div class="col-4">
+                      <span>Align: &nbsp;</span>
+                      <select class="attr-value" title="text-align" name="text_align[]">
+                        {% for a in static.align %}
+                          {% if a == result.data[d].text_align %}
+                            <option value="{{a}}" selected>{{static.align[a]}}</option>
+                          {% else %}
+                            <option value="{{a}}">{{static.align[a]}}</option>
+                          {% endif %}
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="col-4">
+                      <span>Font: &nbsp;</span>
+                      <select class="attr-value" title="font-size" name="font_size[]">
+                        {% for a in static.font %}
+                          {% if a == result.data[d].font_size %}
+                            <option value="{{a}}" selected>{{static.font[a]}}</option>
+                          {% else %}
+                            <option value="{{a}}">{{static.font[a]}}</option>
+                          {% endif %}
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="col-4">
+                      <span>Border: &nbsp;</span>
+                      <select class="attr-value" title="border-style" name="border_style[]">
+                        {% for a in static.border %}
+                          {% if a == result.data[d].border_style %}
+                            <option value="{{a}}" selected>{{static.border[a]}}</option>
+                          {% else %}
+                            <option value="{{a}}">{{static.border[a]}}</option>
+                          {% endif %}
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="col-4">
+                      <span>Background Color: &nbsp;</span>
+                      <input class="attr-value color-input" title="background-color" type="text" name="text_bg_color[]" value="{{result.data[d].text_bg_color}}">
+                    </div>
+                    <div class="col-4">
+                      <span>Text Color: &nbsp;</span>
+                      <input class="attr-value color-input" title="color" type="text" name="text_color[]" value="{{result.data[d].text_color}}">
+                    </div>
+                    <div class="col-4">
+                      <span>Border Color: &nbsp;</span>
+                      <input class="attr-value color-input" title="border-color" type="text" name="border_color[]" value="{{result.data[d].border_color}}">
+                    </div>
+                    <div class="col-12 centering">
+                      <button type="button" name="button" class="btn btn-danger remove-btn mt-3">Remove</button>
+                    </div>
+                  </div>
+                </div>
+                <input type="text" class="ordered" name="order[]" value="{{d}}">
+              </div>
+            </div>
+            {% endif %}
+            {% if result.data[d].type == "image" %}
+            <div class="col-12 centering mb-4 image-container d-none item" id="img-box">
+              <div class="container text-center">
+                <img src="" class="images mb-3 preview-holder">
+                <div class="input-group mb-3 preview-remove">
+                  <input type="file" class="form-control uploading" aria-label="Upload" name="image[]">
+                  <div class="col-12 centering mt-3">
+                    <button type="button" name="button" class="btn btn-danger remove-btn">Remove</button>
+                  </div>
+                </div>
+                <input type="text" class="ordered" name="order_img[]" value="{{d}}">
+              </div>
+            </div>
+            {% endif %}
+          {% endfor %}
           </div>
           <div class="row">
+            <div class="col-6 centering mb-5 preview-remove">
+              <button type="button" class="btn add-btn" id="add-text-box">Add Text Box</button>
+            </div>
+            <div class="col-6 centering mb-5 preview-remove">
+              <button type="button" class="btn add-btn" id="add-img-box">Add Media Box</button>
+            </div>
             <div class="col-12">
               <hr style="border:2px solid white" class="mb-5">
             </div>

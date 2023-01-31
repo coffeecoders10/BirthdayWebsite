@@ -18,6 +18,7 @@ function colorPickers(){
 		$(el).val("#" + hex);
 		$(el).ColorPickerHide();
     $(el).trigger("change");
+    console.log("Change");
   	},
   	onBeforeShow: function () {
   		$(this).ColorPickerSetColor(this.value);
@@ -42,8 +43,9 @@ $(document).on('change', '.attr-value', function () {
   // console.log($(this).val());
   var property = $(this).prop("title");
   var value = $(this).val();
-  // console.log($(this).closest(".container").find('.text-input').first().css(property,value));
-  // $(this).closest(".container").find(".text-input").prop(property,value);
+  // console.log($(this).closest(".container").html());
+  $(this).closest(".container").find(".text-input").css(property,value);
+  // console.log($(this).closest(".container").html());
 });
 
 $(document).on('click', '.remove-btn', function () {
@@ -64,7 +66,16 @@ $(document).ready(function(){
   //   }
   // }
   
-  var order_id = 0;
+  var order_id = $('#data-length').val() - 1;
+  
+  $(".attr-value").each(function(){
+    var property = $(this).prop("title");
+    var value = $(this).val();
+    console.log(property);
+    console.log(value);
+    console.log($(this).closest(".container").find(".text-input").html());
+    $(this).closest(".container").find(".text-input").css(property,value);
+  })
   
   console.log("HELLO Akruti");
   

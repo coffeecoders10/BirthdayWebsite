@@ -4,10 +4,21 @@
         "user_name": "xyz",
         "password": "pqr",
         "data": {
-            "bg_color": "",
+            "bg_color": "#292b2c",
             "0": {
-                "text": "Kya bolti???",
-                "textarea": "center",
+                "type": "text",
+                "text": "sczxcxzcxasdasdasd",
+                "text_align": "left",
+                "font_size": "24px",
+                "border_style": "solid",
+                "text_bg_color": "#bd6fbd",
+                "text_color": "#ffffff",
+                "border_color": "#a334a3"
+            },
+            "1": {
+                "type": "text",
+                "text": "asdqweqwewqe",
+                "text_align": "center",
                 "font_size": "18px",
                 "border_style": "solid",
                 "text_bg_color": "transparent",
@@ -15,16 +26,34 @@
                 "border_color": "#ffffff"
             },
             "2": {
-                "text": "Kaho na kaho",
-                "textarea": "center",
+                "type": "text",
+                "text": "wsdsadsad",
+                "text_align": "center",
                 "font_size": "18px",
                 "border_style": "solid",
                 "text_bg_color": "transparent",
                 "text_color": "#ffffff",
                 "border_color": "#ffffff"
             },
-            "1": {
-                "image_path": "C:\\Users\\NitishTalekar\\Desktop\\Projects\\CoffeeCodersProjects\\BirthdayWebsite\\Flask_App\\static\\data/img_1\\Marvel.png"
+            "4": {
+                "type": "text",
+                "text": "asdasdasd11111",
+                "text_align": "right",
+                "font_size": "18px",
+                "border_style": "solid",
+                "text_bg_color": "transparent",
+                "text_color": "#ffffff",
+                "border_color": "#ffffff"
+            },
+            "5": {
+                "type": "text",
+                "text": "asdsadsadwwww",
+                "text_align": "center",
+                "font_size": "18px",
+                "border_style": "solid",
+                "text_bg_color": "transparent",
+                "text_color": "#ffffff",
+                "border_color": "#ffffff"
             }
         }
     },
