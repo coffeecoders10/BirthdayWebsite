@@ -11,18 +11,17 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 class User(UserMixin):
-    def __init__(self, id, name, password, data):
+    def __init__(self, id, name, password):
         self.id = id
         self.name = name
         self.password = password
-        self.data = data
 
     def __repr__(self):
         return f'<User {self.name}>'
 
 with open(os.path.join(app.static_folder,'data\login.json')) as json_file:
     data = json.load(json_file)
-users = [User(i['id'], i['user_name'], i["password"], i["data"]) for i in data]
+users = [User(i['id'], i['user_name'], i["password"]) for i in data]
 # Return the user object for a given ID
 @login_manager.user_loader
 def load_user(user_id):
@@ -85,14 +84,16 @@ def profile():
             'dashed' : 'Dashed'
         }
     }
-    return render_template("profile.html", static = static_data, result = {"name": users[current_user.id].name, "data": users[current_user.id].data, "id": users[current_user.id].id})
+    with open(os.path.join(app.static_folder,'data/img_' + str(current_user.id) + '/data.json')) as json_file:
+        user_data = json.load(json_file)
+    return render_template("profile.html", static = static_data, result = {"name": users[current_user.id].name, "data": user_data, "id": users[current_user.id].id})
 
 @app.route('/profile', methods=['POST'])
 @login_required
 def profile_post():
     # current_data = []
     # i = current_user.id
-    bg_color = request.form['bg_color'] 
+    bg_color = request.form['bg_color']
     if bg_color == "":
         bg_color = "#292b2c"
     current_data = {"bg_color": bg_color}
@@ -121,20 +122,23 @@ def profile_post():
         }
 
     image = request.files.getlist('image[]')
+    image_name = request.form.getlist('image_name[]')
     l = len(image)
     # order_img = [i for i in range(n, n + l)]
     order_img = request.form.getlist('order_img[]')
-    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER + "/img_1"
+    folder_path = "\img_" + str(current_user.id)
+    # app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER + folder_path
+    # print(image)
+    # print(image_name)
     for i in range(l):
-        path = os.path.join(app.config['UPLOAD_FOLDER'], image[i].filename)
-        current_data[order_img[i]] = {"image_path": path,"type": "image"}
-        image[i].save(path)
+        if image[i].filename != '':
+            current_data[order_img[i]] = {"image_path": "/static/data/img_" + str(current_user.id) + "/" + image[i].filename,"type": "image"}
+            image[i].save(path)
+        else:
+            current_data[order_img[i]] = {"image_path": image_name[i], "type": "image"}
 
-    users[current_user.id].data = current_data
-
-    data[current_user.id]["data"] = current_data
-    save_file = open(os.path.join(app.static_folder,'data\login.json'), "w")
-    json.dump(data, save_file, indent = 4)
+    save_file = open(os.path.join(app.static_folder,'data' + folder_path + '\data.json'), "w")
+    json.dump(current_data, save_file, indent = 4, sort_keys=True)
     save_file.close()
     return redirect(url_for('profile'))
 

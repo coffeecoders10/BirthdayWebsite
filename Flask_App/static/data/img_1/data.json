@@ -1,0 +1,37 @@
+{
+    "0": {
+        "border_color": "#ffffff",
+        "border_style": "solid",
+        "font_size": "18px",
+        "text": "SDHSDH",
+        "text_align": "left",
+        "text_bg_color": "transparent",
+        "text_color": "#ffffff",
+        "type": "text"
+    },
+    "1": {
+        "border_color": "#ffffff",
+        "border_style": "solid",
+        "font_size": "18px",
+        "text": "asdasd",
+        "text_align": "left",
+        "text_bg_color": "transparent",
+        "text_color": "#ffffff",
+        "type": "text"
+    },
+    "2": {
+        "border_color": "#ffffff",
+        "border_style": "solid",
+        "font_size": "32px",
+        "text": "asddddddwdwdwdwd",
+        "text_align": "center",
+        "text_bg_color": "transparent",
+        "text_color": "#ffffff",
+        "type": "text"
+    },
+    "3": {
+        "image_path": "/static/data/img_1/Marvel.png",
+        "type": "image"
+    },
+    "bg_color": "#292b2c"
+}

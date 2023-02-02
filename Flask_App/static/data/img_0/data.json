@@ -1,0 +1,55 @@
+{
+    "0": {
+        "border_color": "#a334a3",
+        "border_style": "solid",
+        "font_size": "24px",
+        "text": "sczxcxzcxasdasdasd",
+        "text_align": "left",
+        "text_bg_color": "#bd6fbd",
+        "text_color": "#ffffff",
+        "type": "text"
+    },
+    "1": {
+        "border_color": "#ffffff",
+        "border_style": "solid",
+        "font_size": "18px",
+        "text": "asdqweqwewqe",
+        "text_align": "center",
+        "text_bg_color": "transparent",
+        "text_color": "#ffffff",
+        "type": "text"
+    },
+    "2": {
+        "border_color": "#ffffff",
+        "border_style": "solid",
+        "font_size": "18px",
+        "text": "wsdsadsad",
+        "text_align": "center",
+        "text_bg_color": "transparent",
+        "text_color": "#ffffff",
+        "type": "text"
+    },
+    "3": {
+        "image_path": "/static/data/img_0/debugging-css.gif",
+        "type": "image"
+    },
+    "4": {
+        "image_path": "/static/data/img_0/good_old_days.png",
+        "type": "image"
+    },
+    "5": {
+        "image_path": "/static/data/img_0/hot_space.jpg",
+        "type": "image"
+    },
+    "6": {
+        "border_color": "#ffffff",
+        "border_style": "solid",
+        "font_size": "18px",
+        "text": "test",
+        "text_align": "center",
+        "text_bg_color": "#07e694",
+        "text_color": "#1100ff",
+        "type": "text"
+    },
+    "bg_color": "#292b2c"
+}

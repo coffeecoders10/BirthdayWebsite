@@ -105,10 +105,13 @@
             </div>
             {% endif %}
             {% if result.data[d].type == "image" %}
-            <div class="col-12 centering mb-4 image-container d-none item" id="img-box">
+            <div class="col-12 centering mb-4 image-container item" id="img-box_1">
               <div class="container text-center">
-                <img src="" class="images mb-3 preview-holder">
+                <img src="{{result.data[d].image_path}}" class="images mb-3 preview-holder">
                 <div class="input-group mb-3 preview-remove">
+                  <div class="d-none">
+                    <input type="text" name="image_name[]" value="{{result.data[d].image_path}}">
+                  </div>
                   <input type="file" class="form-control uploading" aria-label="Upload" name="image[]">
                   <div class="col-12 centering mt-3">
                     <button type="button" name="button" class="btn btn-danger remove-btn">Remove</button>
@@ -218,6 +221,9 @@
       <div class="container text-center">
         <img src="" class="images mb-3 preview-holder">
         <div class="input-group mb-3 preview-remove">
+          <div class="d-none">
+            <input type="text" name="image_name[]" value="">
+          </div>
           <input type="file" class="form-control uploading" aria-label="Upload" name="image[]">
           <div class="col-12 centering mt-3">
             <button type="button" name="button" class="btn btn-danger remove-btn">Remove</button>
