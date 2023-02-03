@@ -19,7 +19,7 @@ class User(UserMixin):
     def __repr__(self):
         return f'<User {self.name}>'
 
-with open(os.path.join(app.static_folder,'data\login.json')) as json_file:
+with open(os.path.join(app.static_folder,'data/login.json')) as json_file:
     data = json.load(json_file)
 users = [User(i['id'], i['user_name'], i["password"]) for i in data]
 # Return the user object for a given ID
@@ -126,7 +126,7 @@ def profile_post():
     l = len(image)
     # order_img = [i for i in range(n, n + l)]
     order_img = request.form.getlist('order_img[]')
-    folder_path = "\img_" + str(current_user.id)
+    folder_path = "/img_" + str(current_user.id)
     # app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER + folder_path
     # print(image)
     # print(image_name)
@@ -137,7 +137,7 @@ def profile_post():
         else:
             current_data[order_img[i]] = {"image_path": image_name[i], "type": "image"}
 
-    save_file = open(os.path.join(app.static_folder,'data' + folder_path + '\data.json'), "w")
+    save_file = open(os.path.join(app.static_folder,'data' + folder_path + '/data.json'), "w")
     json.dump(current_data, save_file, indent = 4, sort_keys=True)
     save_file.close()
     return redirect(url_for('profile'))
