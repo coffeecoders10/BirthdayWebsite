@@ -140,8 +140,9 @@ def profile_post():
     # print(image_name)
     for i in range(l):
         if image[i].filename != '':
-            current_data[order_img[i]] = {"image_path": "/static/data/img_" + str(current_user.id) + "/" + image[i].filename,"type": "image"}
-            image[i].save(path)
+            static_path = folder_path + "/" + image[i].filename
+            current_data[order_img[i]] = {"image_path": "/static/data" + static_path,"type": "image"}
+            image[i].save(os.path.join(app.static_folder,'data' + static_path))
         else:
             current_data[order_img[i]] = {"image_path": image_name[i], "type": "image"}
 

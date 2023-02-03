@@ -51,5 +51,9 @@
         "text_color": "#1100ff",
         "type": "text"
     },
+    "7": {
+        "image_path": "/static/data/img_0/last.jpg",
+        "type": "image"
+    },
     "bg_color": "#292b2c"
 }
