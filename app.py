@@ -11,24 +11,28 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 class User(UserMixin):
-    def __init__(self, id, name, password):
+    def __init__(self, id, user_name, password, name):
         self.id = id
-        self.name = name
+        self.user_name = user_name
         self.password = password
+        self.name = name
 
     def __repr__(self):
         return f'<User {self.name}>'
 
+
+# Return the user object for a given ID
 with open(os.path.join(app.static_folder,'data/login.json')) as json_file:
     data = json.load(json_file)
-users = [User(i['id'], i['user_name'], i["password"]) for i in data]
-# Return the user object for a given ID
+users = [User(i['id'], i['user_name'], i["password"], i["name"]) for i in data]
+
 @login_manager.user_loader
 def load_user(user_id):
     for user in users:
         if user.id == int(user_id):
             return user
     return None
+
 
 @app.route('/')
 def login():
@@ -39,7 +43,8 @@ def login_post():
     user_name = request.form['user_name']
     password = request.form['password']
     # Search for the user in the list of users
-    user = next((x for x in users if x.name == user_name), None)
+    print(users)
+    user = next((x for x in users if x.user_name == user_name), None)
     if user and user.password == password:
         login_user(user)
         return redirect(url_for('profile'))
@@ -84,8 +89,11 @@ def profile():
             'dashed' : 'Dashed'
         }
     }
-    with open(os.path.join(app.static_folder,'data/img_' + str(current_user.id) + '/data.json')) as json_file:
-        user_data = json.load(json_file)
+    try:
+        with open(os.path.join(app.static_folder,'data/img_' + str(current_user.id) + '/data.json')) as json_file:
+            user_data = json.load(json_file)
+    except:
+        user_data = {}
     return render_template("profile.html", static = static_data, result = {"name": users[current_user.id].name, "data": user_data, "id": users[current_user.id].id})
 
 @app.route('/profile', methods=['POST'])
@@ -142,6 +150,35 @@ def profile_post():
     save_file.close()
     return redirect(url_for('profile'))
 
+@app.route('/login')
+def login_new():
+    return render_template('login.html')
+
+@app.route('/login', methods=['POST'])
+def login_new_post():
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+    password = request.form['password']
+    user_name = request.form['user_name']
+    name = first_name + " " + last_name
+    print(data, len(data))
+    data.append({
+        'id': len(data),
+        'password': password,
+        'user_name': user_name,
+        'name': name
+    })
+    users.append(User(len(data), password, user_name, name))
+    save_file = open(os.path.join(app.static_folder,'data/login.json'), "w")
+    json.dump(data, save_file, indent = 4, sort_keys=True)
+    save_file.close()
+    os.mkdir(os.path.join(app.static_folder,'data/img_' + str(len(data) - 1)))
+    with open(os.path.join(app.static_folder,'data/img_' + str(len(data) - 1) + '/data.json'), 'w') as fp:
+        pass
+    print(first_name, last_name, password, user_name)
+
+    return render_template('login.html')
+
 if __name__ == '__main__':
-    # app.run(debug=True)
-    app.run()
+    app.run(debug=True)
+    # app.run()
