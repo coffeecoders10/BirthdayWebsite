@@ -18,7 +18,7 @@
     <div class="container-fluid full centering text-white" id="page" style="background-color:{{result.data.bg_color}}">
       <form class="container" action="{{ url_for('profile_post')}}" method="post" enctype="multipart/form-data">
         <div class="row" id="profile-container">
-          <div class="col-12 centering mb-2">
+          <div class="col-12 centering mb-2 mt-5">
             <h1 class="text-uppercase">{{result.name}}</h1>
             <input type="text" class="d-none" id="data-length" value="{{result.data|length}}">
           </div>
@@ -47,8 +47,8 @@
                 </div>
                 <div class="preview-remove">
                   <div class="row">
-                    <div class="col-4">
-                      <span>Align: &nbsp;</span>
+                    <div class="lg-col-4 col-6">
+                      <span>Align: &nbsp;</span><br>
                       <select class="attr-value" title="text-align" name="text_align[]">
                         {% for a in static.align %}
                           {% if a == result.data[d].text_align %}
@@ -59,8 +59,12 @@
                         {% endfor %}
                       </select>
                     </div>
-                    <div class="col-4">
-                      <span>Font: &nbsp;</span>
+                    <div class="lg-col-4 col-6">
+                      <span>Background Color: &nbsp;</span><br>
+                      <input class="attr-value color-input text-attr" title="background-color" type="text" name="text_bg_color[]" value="{{result.data[d].text_bg_color}}">
+                    </div>
+                    <div class="lg-col-4 col-6">
+                      <span>Font: &nbsp;</span><br>
                       <select class="attr-value" title="font-size" name="font_size[]">
                         {% for a in static.font %}
                           {% if a == result.data[d].font_size %}
@@ -71,8 +75,12 @@
                         {% endfor %}
                       </select>
                     </div>
-                    <div class="col-4">
-                      <span>Border: &nbsp;</span>
+                    <div class="lg-col-4 col-6">
+                      <span>Text Color: &nbsp;</span><br>
+                      <input class="attr-value color-input text-attr" title="color" type="text" name="text_color[]" value="{{result.data[d].text_color}}">
+                    </div>
+                    <div class="lg-col-4 col-6">
+                      <span>Border: &nbsp;</span><br>
                       <select class="attr-value" title="border-style" name="border_style[]">
                         {% for a in static.border %}
                           {% if a == result.data[d].border_style %}
@@ -83,24 +91,16 @@
                         {% endfor %}
                       </select>
                     </div>
-                    <div class="col-4">
-                      <span>Background Color: &nbsp;</span>
-                      <input class="attr-value color-input" title="background-color" type="text" name="text_bg_color[]" value="{{result.data[d].text_bg_color}}">
-                    </div>
-                    <div class="col-4">
-                      <span>Text Color: &nbsp;</span>
-                      <input class="attr-value color-input" title="color" type="text" name="text_color[]" value="{{result.data[d].text_color}}">
-                    </div>
-                    <div class="col-4">
-                      <span>Border Color: &nbsp;</span>
-                      <input class="attr-value color-input" title="border-color" type="text" name="border_color[]" value="{{result.data[d].border_color}}">
+                    <div class="lg-col-4 col-6">
+                      <span>Border Color: &nbsp;</span><br>
+                      <input class="attr-value color-input text-attr" title="border-color" type="text" name="border_color[]" value="{{result.data[d].border_color}}">
                     </div>
                     <div class="col-12 centering">
                       <button type="button" name="button" class="btn btn-danger remove-btn mt-3">Remove</button>
                     </div>
                   </div>
                 </div>
-                <input type="text" class="ordered" name="order[]" value="{{d}}">
+                <input type="text" class="d-none ordered" name="order[]" value="{{d}}">
               </div>
             </div>
             {% endif %}
@@ -117,13 +117,13 @@
                     <button type="button" name="button" class="btn btn-danger remove-btn">Remove</button>
                   </div>
                 </div>
-                <input type="text" class="ordered" name="order_img[]" value="{{d}}">
+                <input type="text" class="d-none ordered" name="order_img[]" value="{{d}}">
               </div>
             </div>
             {% endif %}
           {% endfor %}
           </div>
-          <div class="row">
+          <div class="row mb-5">
             <div class="col-6 centering mb-5 preview-remove">
               <button type="button" class="btn add-btn" id="add-text-box">Add Text Box</button>
             </div>
@@ -158,16 +158,21 @@
         </div>
         <div class="preview-remove">
           <div class="row">
-            <div class="col-4">
-              <span>Align: &nbsp;</span>
+            
+            <div class="lg-col-4 col-6">
+              <span>Align: &nbsp;</span><br>
               <select class="attr-value" title="text-align" name="text_align[]">
                 <option value="left">Left</option>
                 <option value="right">Right</option>
                 <option value="center" selected>Middle</option>
               </select>
             </div>
-            <div class="col-4">
-              <span>Font: &nbsp;</span>
+            <div class="lg-col-4 col-6">
+              <span>Background Color: &nbsp;</span><br>
+              <input class="attr-value color-input text-attr" title="background-color" type="text" name="text_bg_color[]" value="transparent">
+            </div>
+            <div class="lg-col-4 col-6">
+              <span>Font: &nbsp;</span> <br>
               <select class="attr-value" title="font-size" name="font_size[]">
                 <option value="4px">4</option>
                 <option value="6px">6</option>
@@ -186,32 +191,28 @@
                 <option value="32px">32</option>
               </select>
             </div>
-            <div class="col-4">
-              <span>Border: &nbsp;</span>
+            <div class="lg-col-4 col-6">
+              <span>Text Color: &nbsp;</span><br>
+              <input class="attr-value color-input text-attr" title="color" type="text" name="text_color[]" value="#ffffff">
+            </div>
+            <div class="lg-col-4 col-6">
+              <span>Border: &nbsp;</span><br>
               <select class="attr-value" title="border-style" name="border_style[]">
                 <option value="none">None</option>
                 <option value="solid" selected>Solid</option>
                 <option value="dashed">Dashed</option>
               </select>
             </div>
-            <div class="col-4">
-              <span>Background Color: &nbsp;</span>
-              <input class="attr-value color-input" title="background-color" type="text" name="text_bg_color[]" value="transparent">
-            </div>
-            <div class="col-4">
-              <span>Text Color: &nbsp;</span>
-              <input class="attr-value color-input" title="color" type="text" name="text_color[]" value="#ffffff">
-            </div>
-            <div class="col-4">
-              <span>Border Color: &nbsp;</span>
-              <input class="attr-value color-input" title="border-color" type="text" name="border_color[]" value="#ffffff">
+            <div class="lg-col-4 col-6">
+              <span>Border Color: &nbsp;</span><br>
+              <input class="attr-value color-input text-attr" title="border-color" type="text" name="border_color[]" value="#ffffff">
             </div>
             <div class="col-12 centering">
               <button type="button" name="button" class="btn btn-danger remove-btn mt-3">Remove</button>
             </div>
           </div>
         </div>
-        <input type="text" class="ordered" name="order[]" value="">
+        <input type="text" class="d-none ordered" name="order[]" value="">
       </div>
     </div>
     <div class="col-12 centering mb-4 image-container d-none item" id="img-box">
@@ -226,7 +227,7 @@
             <button type="button" name="button" class="btn btn-danger remove-btn">Remove</button>
           </div>
         </div>
-        <input type="text" class="ordered" name="order_img[]" value="">
+        <input type="text" class="d-none ordered" name="order_img[]" value="">
       </div>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
