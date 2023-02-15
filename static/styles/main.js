@@ -12,22 +12,22 @@ function readURLs(input,ele) {
   }
 }
 
-function colorPickers(){
-  $('.color-input').ColorPicker({
-	onSubmit: function(hsb, hex, rgb, el) {
-		$(el).val("#" + hex);
-		$(el).ColorPickerHide();
-    $(el).trigger("change");
-    console.log("Change");
-  	},
-  	onBeforeShow: function () {
-  		$(this).ColorPickerSetColor(this.value);
-  	}
-  })
-  .bind('keyup', function(){
-  	$(this).ColorPickerSetColor(this.value);
-  });
-}
+// function colorPickers(){
+//   $('.color-input').ColorPicker({
+// 	onSubmit: function(hsb, hex, rgb, el) {
+// 		$(el).val("#" + hex);
+// 		$(el).ColorPickerHide();
+//     $(el).trigger("change");
+//     console.log("Change");
+//   	},
+//   	onBeforeShow: function () {
+//   		$(this).ColorPickerSetColor(this.value);
+//   	}
+//   })
+//   .bind('keyup', function(){
+//   	$(this).ColorPickerSetColor(this.value);
+//   });
+// }
 
 $(document).on("input",".text-input",function(){
   this.style.height = 'auto'; 
@@ -79,7 +79,7 @@ $(document).ready(function(){
   
   console.log("HELLO Akruti");
   
-  colorPickers();
+  // colorPickers();
   
   $(".preview").click(function(){
     $(".text-input").each(function(){
@@ -111,7 +111,7 @@ $(document).ready(function(){
     clone.find(".ordered").val(order_id);
     order_id++;
     $("#profile-container").append(clone)
-    colorPickers();
+    // colorPickers();
     
   });
   
