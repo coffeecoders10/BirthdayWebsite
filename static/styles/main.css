@@ -33,3 +33,22 @@
   width: 85%;
 }
   
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(23, 24, 24, 0.74);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #161313;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #242323;
+}
