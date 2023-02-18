@@ -93,7 +93,7 @@ def profile():
         with open(os.path.join(app.static_folder,'data/img_' + str(current_user.id) + '/data.json')) as json_file:
             user_data = json.load(json_file)
     except:
-        user_data = {}
+        user_data = {"bg_color":"#292b2c"}
     return render_template("profile.html", static = static_data, result = {"name": users[current_user.id].name, "data": user_data, "id": users[current_user.id].id})
 
 @app.route('/profile', methods=['POST'])
