@@ -1,12 +1,12 @@
 {
     "0": {
-        "border_color": "#a334a3",
+        "border_color": "#246c85",
         "border_style": "solid",
         "font_size": "24px",
         "text": "sczxcxzcxasdasdasd",
         "text_align": "left",
-        "text_bg_color": "#bd6fbd",
-        "text_color": "#ffffff",
+        "text_bg_color": "#31839e",
+        "text_color": "#6ea5b8",
         "type": "text"
     },
     "1": {
@@ -54,6 +54,16 @@
     "7": {
         "image_path": "/static/data/img_0/last.jpg",
         "type": "image"
+    },
+    "8": {
+        "border_color": "#e62929",
+        "border_style": "solid",
+        "font_size": "18px",
+        "text": "",
+        "text_align": "center",
+        "text_bg_color": "#9e3636",
+        "text_color": "#ffffff",
+        "type": "text"
     },
     "bg_color": "#292b2c"
 }

@@ -12,22 +12,12 @@ function readURLs(input,ele) {
   }
 }
 
-// function colorPickers(){
-//   $('.color-input').ColorPicker({
-// 	onSubmit: function(hsb, hex, rgb, el) {
-// 		$(el).val("#" + hex);
-// 		$(el).ColorPickerHide();
-//     $(el).trigger("change");
-//     console.log("Change");
-//   	},
-//   	onBeforeShow: function () {
-//   		$(this).ColorPickerSetColor(this.value);
-//   	}
-//   })
-//   .bind('keyup', function(){
-//   	$(this).ColorPickerSetColor(this.value);
-//   });
-// }
+function colorPickers(){
+  $('.colors-input').each( function() {
+    console.log("HELLO");
+     $(this).minicolors();
+  });
+}
 
 $(document).on("input",".text-input",function(){
   this.style.height = 'auto'; 
@@ -53,33 +43,21 @@ $(document).on('click', '.remove-btn', function () {
 });
 
 $(document).ready(function(){
-  // function readURL(input,ele) {
-  //   if (input.files && input.files[0]) {
-  //     var reader = new FileReader();
-  //     reader.onload = function(e) {
-  //       ele.attr('src', e.target.result);
-  //     }
-  //     reader.readAsDataURL(input.files[0]);
-  //   } else {
-  //     alert('select a file to see preview');
-  //     ele.attr('src', '');
-  //   }
-  // }
-  
+
   var order_id = $('#data-length').val() - 1;
   
   $(".attr-value").each(function(){
     var property = $(this).prop("title");
     var value = $(this).val();
-    console.log(property);
-    console.log(value);
-    console.log($(this).closest(".container").find(".text-input").html());
+    // console.log(property);
+    // console.log(value);
+    // console.log($(this).closest(".container").find(".text-input").html());
     $(this).closest(".container").find(".text-input").css(property,value);
   })
   
   console.log("HELLO Akruti");
   
-  // colorPickers();
+  colorPickers();
   
   $(".preview").click(function(){
     $(".text-input").each(function(){
@@ -92,11 +70,11 @@ $(document).ready(function(){
     });
     if($(".preview").html() == "Preview"){
       $(".preview-remove").hide()
-      $(".preview").html("Edit")
+      $(".preview").html("EDIT")
     }
     else{
       $(".preview-remove").show()
-      $(".preview").html("Preview")
+      $(".preview").html("PREVIEW")
     }
   });
     
@@ -111,7 +89,7 @@ $(document).ready(function(){
     clone.find(".ordered").val(order_id);
     order_id++;
     $("#profile-container").append(clone)
-    // colorPickers();
+    colorPickers();
     
   });
   
