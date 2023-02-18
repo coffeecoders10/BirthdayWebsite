@@ -28,18 +28,18 @@
       <form class="container" action="{{ url_for('profile_post')}}" method="post" enctype="multipart/form-data">
         <div class="row" id="profile-container">
           <div class="col-12 centering mb-2 mt-5">
-            <h1 class="text-uppercase">{{result.name}}</h1>
+            <h1 class="text-uppercase label-text text-white">{{result.name}}</h1>
             <input type="text" class="d-none" id="data-length" value="{{result.data|length}}">
           </div>
           <div class="col-12">
             <hr style="border:2px solid white" class="mb-5">
           </div>
-          <div class="col-12 centering mb-5 preview-remove">
-            <div class="input-group mb-3">
-              <input type="text" class="form-control colors-input" name = "bg_color" id="bg-color" value="{{result.data.bg_color}}">
-              <div class="input-group-append">
-                <button class="btn btn-light border-dark" type="button" id="bg-change">Change Background</button>
-              </div>
+          <div class="col-12 mb-5 preview-remove">
+            <div class="input-group mb-3 d-flex justify-content-center label-text text-white">
+                Background Color:
+            </div>
+            <div class="input-group mb-3 d-flex justify-content-center">
+                <input type="text" class="form-control colors-input" name = "bg_color" id="bg-color" value="{{result.data.bg_color}}"><br>
             </div>
           </div>
           {% for d in result.data %}
@@ -57,7 +57,7 @@
                 <div class="preview-remove">
                   <div class="row">
                     <div class="lg-col-4 col-6">
-                      <span>Align: &nbsp;</span><br>
+                      <span class="label-text text-white">Align: &nbsp;</span><br>
                       <select class="attr-value" title="text-align" name="text_align[]">
                         {% for a in static.align %}
                           {% if a == result.data[d].text_align %}
@@ -69,11 +69,11 @@
                       </select>
                     </div>
                     <div class="lg-col-4 col-6">
-                      <span>Background Color: &nbsp;</span><br>
+                      <span class="label-text text-white">Background Color: &nbsp;</span><br>
                       <input class="attr-value colors-input text-attr" title="background-color" type="text" name="text_bg_color[]" value="{{result.data[d].text_bg_color}}">
                     </div>
                     <div class="lg-col-4 col-6">
-                      <span>Font: &nbsp;</span><br>
+                      <span class="label-text text-white">Font: &nbsp;</span><br>
                       <select class="attr-value" title="font-size" name="font_size[]">
                         {% for a in static.font %}
                           {% if a == result.data[d].font_size %}
@@ -85,11 +85,11 @@
                       </select>
                     </div>
                     <div class="lg-col-4 col-6">
-                      <span>Text Color: &nbsp;</span><br>
+                      <span class="label-text text-white">Text Color: &nbsp;</span><br>
                       <input class="attr-value colors-input text-attr" title="color" type="text" name="text_color[]" value="{{result.data[d].text_color}}">
                     </div>
                     <div class="lg-col-4 col-6">
-                      <span>Border: &nbsp;</span><br>
+                      <span class="label-text text-white">Border: &nbsp;</span><br>
                       <select class="attr-value" title="border-style" name="border_style[]">
                         {% for a in static.border %}
                           {% if a == result.data[d].border_style %}
@@ -101,7 +101,7 @@
                       </select>
                     </div>
                     <div class="lg-col-4 col-6">
-                      <span>Border Color: &nbsp;</span><br>
+                      <span class="label-text text-white">Border Color: &nbsp;</span><br>
                       <input class="attr-value colors-input text-attr" title="border-color" type="text" name="border_color[]" value="{{result.data[d].border_color}}">
                     </div>
                     <div class="col-12 centering">
@@ -168,7 +168,7 @@
         <div class="preview-remove">
           <div class="row">
             <div class="lg-col-4 col-6">
-              <span>Align: &nbsp;</span><br>
+              <span class="label-text text-white">Align: &nbsp;</span><br>
               <select class="attr-value" title="text-align" name="text_align[]">
                 <option value="left">Left</option>
                 <option value="right">Right</option>
@@ -176,11 +176,11 @@
               </select>
             </div>
             <div class="lg-col-4 col-6">
-              <span>Background Color: &nbsp;</span><br>
+              <span class="label-text text-white">Background Color: &nbsp;</span><br>
               <input class="attr-value colors-input text-attr" title="background-color" type="text" name="text_bg_color[]" value="transparent">
             </div>
             <div class="lg-col-4 col-6">
-              <span>Font: &nbsp;</span> <br>
+              <span class="label-text text-white">Font: &nbsp;</span> <br>
               <select class="attr-value" title="font-size" name="font_size[]">
                 <option value="4px">4</option>
                 <option value="6px">6</option>
@@ -200,11 +200,11 @@
               </select>
             </div>
             <div class="lg-col-4 col-6">
-              <span>Text Color: &nbsp;</span><br>
+              <span class="label-text text-white">Text Color: &nbsp;</span><br>
               <input class="attr-value colors-input text-attr" title="color" type="text" name="text_color[]" value="#ffffff">
             </div>
             <div class="lg-col-4 col-6">
-              <span>Border: &nbsp;</span><br>
+              <span class="label-text text-white">Border: &nbsp;</span><br>
               <select class="attr-value" title="border-style" name="border_style[]">
                 <option value="none">None</option>
                 <option value="solid" selected>Solid</option>
@@ -212,7 +212,7 @@
               </select>
             </div>
             <div class="lg-col-4 col-6">
-              <span>Border Color: &nbsp;</span><br>
+              <span class="label-text text-white">Border Color: &nbsp;</span><br>
               <input class="attr-value colors-input text-attr" title="border-color" type="text" name="border_color[]" value="#ffffff">
             </div>
             <div class="col-12 centering">

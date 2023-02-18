@@ -19,6 +19,35 @@ function colorPickers(){
   });
 }
 
+function lightOrDark(color) {
+    var r, g, b, hsp;
+    if (color.match(/^rgb/)) {
+        color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
+        r = color[1];
+        g = color[2];
+        b = color[3];
+    } 
+    else {
+        color = +("0x" + color.slice(1).replace( 
+        color.length < 5 && /./g, '$&$&'));
+
+        r = color >> 16;
+        g = color >> 8 & 255;
+        b = color & 255;
+    }
+    hsp = Math.sqrt(
+    0.299 * (r * r) +
+    0.587 * (g * g) +
+    0.114 * (b * b)
+    );
+    if (hsp>127.5) {
+        return 'light';
+    } 
+    else {
+        return 'dark';
+    }
+}
+
 $(document).on("input",".text-input",function(){
   this.style.height = 'auto'; 
   this.style.height = (this.scrollHeight) + 'px'; 
@@ -26,6 +55,23 @@ $(document).on("input",".text-input",function(){
 
 $(document).on('change', '.uploading', function () {
   readURLs(this,$(this).parent().parent().find(".preview-holder"));
+});
+
+$(document).on('change', '#bg-color', function () {
+  $("#page").css("background-color",$("#bg-color").val());
+  var lumen = lightOrDark($("#bg-color").val());
+  if(lumen == 'light'){
+    $(".label-text").addClass('text-dark').removeClass('text-white');
+  }
+  else{
+    $(".label-text").addClass('text-white').removeClass('text-dark');
+  }
+});
+
+$("#bg-color").change(function(){
+  
+  
+  
 });
 
 $(document).on('change', '.attr-value', function () {
@@ -60,6 +106,7 @@ $(document).ready(function(){
   colorPickers();
   
   $(".preview").click(function(){
+    console.log("Preview");
     $(".text-input").each(function(){
       if($(this).prop("readonly") == true){
         $(this).prop("readonly",false);
@@ -68,7 +115,7 @@ $(document).ready(function(){
         $(this).prop("readonly",true);
       }
     });
-    if($(".preview").html() == "Preview"){
+    if($(".preview").html() == "PREVIEW"){
       $(".preview-remove").hide()
       $(".preview").html("EDIT")
     }
@@ -102,8 +149,5 @@ $(document).ready(function(){
     $("#profile-container").append(clone)
   });
   
-  $("#bg-change").click(function(){
-    $("#page").css("background-color",$("#bg-color").val());
-  });
   
 });
