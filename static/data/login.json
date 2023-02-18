@@ -4,5 +4,11 @@
         "name": "Nitish Talekar",
         "password": "nitish503",
         "user_name": "nitishtalekar"
+    },
+    {
+        "id": 1,
+        "name": "Anamika Prasad",
+        "password": "anamika302",
+        "user_name": "anamikaprasad"
     }
 ]
