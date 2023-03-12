@@ -1,0 +1,13 @@
+{
+    "0": {
+        "border_color": "#ffffff",
+        "border_style": "solid",
+        "font_size": "18px",
+        "text": "Vahini happy birthday \ud83c\udf88",
+        "text_align": "center",
+        "text_bg_color": "",
+        "text_color": "#ffffff",
+        "type": "text"
+    },
+    "bg_color": "#292b2c"
+}

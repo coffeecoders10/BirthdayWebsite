@@ -1,6 +1,13 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 import os, json
+import requests
+from time import sleep
+
+username = 'akrutimishra'
+api_token = '1766ed84cbe50fced70ffbcc07a53e2fbfbcd778'
+domain_name = "akrutimishra.pythonanywhere.com"
+
 app = Flask(__name__)
 app.secret_key = "secret_key"
 # current_user.name
@@ -153,7 +160,7 @@ def profile_post():
 
 @app.route('/login')
 def login_new():
-    return render_template('login.html')
+    return render_template('login.html', exist=False)
 
 @app.route('/login', methods=['POST'])
 def login_new_post():
@@ -162,7 +169,9 @@ def login_new_post():
     password = request.form['password']
     user_name = request.form['user_name']
     name = first_name + " " + last_name
-    print(data, len(data))
+    for user in users:
+        if user.user_name == user_name:
+            return render_template("login.html", exist=True)
     data.append({
         'id': len(data),
         'password': password,
@@ -176,9 +185,21 @@ def login_new_post():
     os.mkdir(os.path.join(app.static_folder,'data/img_' + str(len(data) - 1)))
     with open(os.path.join(app.static_folder,'data/img_' + str(len(data) - 1) + '/data.json'), 'w') as fp:
         pass
+
     print(first_name, last_name, password, user_name)
 
-    return render_template('login.html')
+    response = requests.post(
+    'https://www.pythonanywhere.com/api/v0/user/{username}/webapps/{domain_name}/reload/'.format(
+        username=username, domain_name=domain_name
+    ),
+    headers={'Authorization': 'Token {token}'.format(token=api_token)}
+    )
+    if response.status_code == 200:
+        print('reloaded OK')
+    else:
+        print('Got unexpected status code {}: {!r}'.format(response.status_code, response.content))
+    print("HELLO")
+    return redirect(url_for('profile'))
 
 if __name__ == '__main__':
     app.run(debug=True)

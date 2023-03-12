@@ -1,0 +1,17 @@
+{
+    "0": {
+        "border_color": "#ffffff",
+        "border_style": "dashed",
+        "font_size": "18px",
+        "text": "Happie Burrday \ud83d\udc97\ud83d\udc97\ud83d\udc97  ",
+        "text_align": "center",
+        "text_bg_color": "#050505",
+        "text_color": "#ffffff",
+        "type": "text"
+    },
+    "1": {
+        "image_path": "/static/data/img_9/IMG-20220819-WA0011.jpg",
+        "type": "image"
+    },
+    "bg_color": "#821d38"
+}

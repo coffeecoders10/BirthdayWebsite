@@ -1,0 +1,25 @@
+{
+    "0": {
+        "border_color": "#ffffff",
+        "border_style": "dashed",
+        "font_size": "14px",
+        "text": "Hey bhena, its your birthday today and guess what you're getting old\ud83d\ude02.....\r\nJust kidding, i am too it's okay.\r\nHAPPY BIRTHDAY to my dumbo sister, thank you for being my best friend and my personal therapist \u2764\ufe0f\r\nwe have a relationship like no other, you're the most important person in the world to me.\r\nYou're someone very special and i just want you to know wherever we go & whatever we do, i will always love you \u2764\ufe0f\u2764\ufe0f also my childhood would have been incomplete and imperfect without a sister like you.....\r\nHappy Birthday once again.\ud83e\udd42",
+        "text_align": "left",
+        "text_bg_color": "",
+        "text_color": "#ffffff",
+        "type": "text"
+    },
+    "1": {
+        "image_path": "/static/data/img_11/Screenshot_20230312-124014.jpg",
+        "type": "image"
+    },
+    "2": {
+        "image_path": "/static/data/img_11/Screenshot_20230312-124050.jpg",
+        "type": "image"
+    },
+    "3": {
+        "image_path": "/static/data/img_11/Screenshot_20230312-123931.jpg",
+        "type": "image"
+    },
+    "bg_color": "#292b2c"
+}

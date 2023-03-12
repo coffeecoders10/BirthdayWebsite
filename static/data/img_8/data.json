@@ -1,0 +1,17 @@
+{
+    "1": {
+        "image_path": "/static/data/img_8/Screenshot_2023-03-11-21-15-46-885_com.google.android.apps.photos.jpg",
+        "type": "image"
+    },
+    "3": {
+        "border_color": "#ffe0e0",
+        "border_style": "none",
+        "font_size": "18px",
+        "text": "Happy birthday to a friend who has a heart of gold and a spirit that shines bright\u2728 Wishing you all the love and happiness in the world\ud83d\ude18\r\nCheers to your personal New Year! \ud83e\udd42\ud83c\udf7e",
+        "text_align": "center",
+        "text_bg_color": "#875454",
+        "text_color": "#ffffff",
+        "type": "text"
+    },
+    "bg_color": "#292b2c"
+}

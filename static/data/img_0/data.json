@@ -19,6 +19,10 @@
         "text_color": "#ffffff",
         "type": "text"
     },
+    "10": {
+        "image_path": "/static/data/img_0/be425b3db972dc615c032dfe9a892b9d.jpg",
+        "type": "image"
+    },
     "2": {
         "border_color": "#ffffff",
         "border_style": "solid",
@@ -59,7 +63,7 @@
         "border_color": "#e62929",
         "border_style": "solid",
         "font_size": "18px",
-        "text": "",
+        "text": "Abcd",
         "text_align": "center",
         "text_bg_color": "#9e3636",
         "text_color": "#ffffff",

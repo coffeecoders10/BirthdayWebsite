@@ -1,16 +1,76 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <form class="" action="{{ url_for('login_new_post')}}" method="post">
-      First Name: <input type="text" name="first_name" required><br>
-      Last Name:<input type="text" name="last_name" required><br>
-      User Name:<input type="text" name="user_name" required><br>
-      Password:<input type="password" name="password" required><br>
-      <button type="submit" >SUBMIT</button>
+<html lang="en">
+<head>
+  <title>Register Form</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      background-color: #343a40;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .form-container {
+      background-color: #555;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .form-container input[type=text], input[type=password] {
+      background-color: #fff;
+      color: #333;
+      border-radius: 5px;
+    }
+    .form-container input[type=submit] {
+      background-color: #28a745;
+      border-color: #28a745;
+    }
+    .form-container input[type=submit]:hover {
+      background-color: #218838;
+      border-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <form action="{{ url_for('login_new_post')}}" method="post">
+    <div class="form-group">
+        <div class="alert alert-warning" role="alert">
+          After registering, the site might crash. That is normal and your registration would be successful. Try logging in after the site reloads.
+        </div>
+    </div>
+    {% if exist %}
+    <div class="form-group">
+        <div class="alert alert-warning" role="alert">
+          User Already Exists. Try Logging In via login page.
+        </div>
+    </div>
+    {% endif %}
+      <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input type="text" class="form-control" id="firstName" name="first_name" placeholder="Enter First Name" required>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input type="text" class="form-control" id="lastName" name="last_name" placeholder="Enter Last Name" required>
+      </div>
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" class="form-control" id="username" name="user_name" placeholder="Enter Username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Register</button>
+      <a href="https://akrutimishra.pythonanywhere.com" class="btn btn-secondary">Back</a>
     </form>
-  </body>
+  </div>
+</body>
 </html>
