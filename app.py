@@ -44,6 +44,25 @@ def load_user(user_id):
 @app.route('/')
 def login():
     return render_template('index.html')
+    
+@app.route('/birthday_profile', methods=['POST'])
+def birthday_post():
+    user_name = request.form['user_name']
+    print(user_name)
+    user = next((x for x in users if x.user_name == user_name), None)
+    login_user(user)
+    return redirect(url_for('profile_preview'))
+    
+@app.route('/birthday')
+def birthday():
+    user_data = []
+    for a_user in users:
+        user_dict = {}
+        user_dict['name'] = a_user.name
+        user_dict['value'] = a_user.user_name
+        user_data.append(user_dict)
+    return render_template('birthday.html', data = user_data)
+
 
 @app.route('/', methods=['POST'])
 def login_post():
@@ -52,9 +71,12 @@ def login_post():
     # Search for the user in the list of users
     print(users)
     user = next((x for x in users if x.user_name == user_name), None)
-    if user and user.password == password:
+    if user_name == 'akrutimishra' and password == "cupcake":
+        print("HELLO XX")
+        return redirect(url_for('birthday')) 
+    elif user and user.password == password:
         login_user(user)
-        return redirect(url_for('profile'))
+        return redirect(url_for('profile')) 
     else:
         return redirect(url_for('login'))
 
@@ -63,6 +85,45 @@ def login_post():
 def logout():
     logout_user()
     return redirect(url_for('login'))
+    
+@app.route('/profile_preview')
+# @login_required
+def profile_preview():
+    static_data = {
+        "align" : {
+            'left' : "Left",
+            'right' : "Right",
+            'center' : "Middle"
+        },
+        'font' : {
+            '4px' : "4",
+            '6px' : "6",
+            '8px' : "8",
+            '10px' : "10",
+            '12px' : "12",
+            '14px' : "14",
+            '16px' : "16",
+            '18px' : "18",
+            '20px' : "20",
+            '22px' : "22",
+            '24px' : "24",
+            '26px' : "26",
+            '28px' : "28",
+            '30px' : "30",
+            '32px' : "32",
+        },
+        'border' : {
+            'none' : 'None',
+            'solid' : 'Solid',
+            'dashed' : 'Dashed'
+        }
+    }
+    try:
+        with open(os.path.join(app.static_folder,'data/img_' + str(current_user.id) + '/data.json')) as json_file:
+            user_data = json.load(json_file)
+    except:
+        user_data = {"bg_color":"#292b2c"}
+    return render_template("profile_preview.html", static = static_data, result = {"name": users[current_user.id].name, "data": user_data, "id": users[current_user.id].id})
 
 @app.route('/profile')
 @login_required

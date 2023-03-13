@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/minicolors/jquery.minicolors.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="{{ url_for('static',filename='styles/main.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static',filename='styles/minicolors/jquery.minicolors.js') }}" type="text/javascript"></script>
+    <script>
+      $(document).ready( function() {
+
+        $('.colors-input').each( function() {
+           $(this).minicolors();
+        });
+        $(".text-input").each(function(){
+          this.style.height = 'auto'; 
+          this.style.height = (this.scrollHeight) + 'px'; 
+        });
+        
+        $(".text-input").each(function(){
+          if($(this).prop("readonly") == true){
+            $(this).prop("readonly",false);
+          }
+          else{
+            $(this).prop("readonly",true);
+          }
+        });
+        $(".preview-remove").hide();
+
+      });
+    </script>
+    <title>Akruti - Wishes</title>
+  </head>
+  <body>
+    <div class="container-fluid full centering text-white" id="page" style="background-color:{{result.data.bg_color}}">
+      <form class="container" action="{{ url_for('profile_post')}}" method="post" enctype="multipart/form-data">
+        <div class="row" id="profile-container">
+          <div class="col-12 centering mb-2 mt-5">
+            <h1 class="text-uppercase label-text text-white">{{result.name}}</h1>
+            <input type="text" class="d-none" id="data-length" value="{{result.data|length}}">
+          </div>
+          <div class="col-12">
+            <hr style="border:2px solid white" class="mb-5">
+          </div>
+          <div class="col-12 mb-5 preview-remove">
+            <div class="input-group mb-3 d-flex justify-content-center label-text text-white">
+                Background Color:
+            </div>
+            <div class="input-group mb-3 d-flex justify-content-center">
+                <input type="text" class="form-control colors-input" name = "bg_color" id="bg-color" value="{{result.data.bg_color}}"><br>
+            </div>
+          </div>
+          {% for d in result.data %}
+            {% if result.data[d].type == "text" %}
+            <div class="col-12 centering mb-4 text-container item">
+              <div class="container">
+                <div class="input-group mb-3">
+                  <textarea rows="1" class="form-control text-input" name = "text[]"
+                  style="
+                  border-width: 2px;">{{result.data[d].text}}</textarea>
+                </div>
+                <div class="preview-remove">
+                  <div class="row">
+                    <div class="lg-col-4 col-6">
+                      <span class="label-text text-white">Align: &nbsp;</span><br>
+                      <select class="attr-value" title="text-align" name="text_align[]">
+                        {% for a in static.align %}
+                          {% if a == result.data[d].text_align %}
+                            <option value="{{a}}" selected>{{static.align[a]}}</option>
+                          {% else %}
+                            <option value="{{a}}">{{static.align[a]}}</option>
+                          {% endif %}
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="lg-col-4 col-6">
+                      <span class="label-text text-white">Background Color: &nbsp;</span><br>
+                      <input class="attr-value colors-input text-attr" title="background-color" type="text" name="text_bg_color[]" value="{{result.data[d].text_bg_color}}">
+                    </div>
+                    <div class="lg-col-4 col-6">
+                      <span class="label-text text-white">Font: &nbsp;</span><br>
+                      <select class="attr-value" title="font-size" name="font_size[]">
+                        {% for a in static.font %}
+                          {% if a == result.data[d].font_size %}
+                            <option value="{{a}}" selected>{{static.font[a]}}</option>
+                          {% else %}
+                            <option value="{{a}}">{{static.font[a]}}</option>
+                          {% endif %}
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="lg-col-4 col-6">
+                      <span class="label-text text-white">Text Color: &nbsp;</span><br>
+                      <input class="attr-value colors-input text-attr" title="color" type="text" name="text_color[]" value="{{result.data[d].text_color}}">
+                    </div>
+                    <div class="lg-col-4 col-6">
+                      <span class="label-text text-white">Border: &nbsp;</span><br>
+                      <select class="attr-value" title="border-style" name="border_style[]">
+                        {% for a in static.border %}
+                          {% if a == result.data[d].border_style %}
+                            <option value="{{a}}" selected>{{static.border[a]}}</option>
+                          {% else %}
+                            <option value="{{a}}">{{static.border[a]}}</option>
+                          {% endif %}
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="lg-col-4 col-6">
+                      <span class="label-text text-white">Border Color: &nbsp;</span><br>
+                      <input class="attr-value colors-input text-attr" title="border-color" type="text" name="border_color[]" value="{{result.data[d].border_color}}">
+                    </div>
+                    <div class="col-12 centering">
+                      <button type="button" name="button" class="btn btn-danger remove-btn mt-3">Remove</button>
+                    </div>
+                  </div>
+                </div>
+                <input type="text" class="d-none ordered" name="order[]" value="{{d}}">
+              </div>
+            </div>
+            {% endif %}
+            {% if result.data[d].type == "image" %}
+            <div class="col-12 centering mb-4 image-container item" id="img-box_1">
+              <div class="container text-center">
+                <img src="{{result.data[d].image_path}}" class="images mb-3 preview-holder">
+                <div class="input-group mb-3 preview-remove">
+                  <div class="d-none">
+                    <input type="text" name="image_name[]" value="{{result.data[d].image_path}}">
+                  </div>
+                  <input type="file" class="form-control uploading" aria-label="Upload" name="image[]">
+                  <div class="col-12 centering mt-3">
+                    <button type="button" name="button" class="btn btn-danger remove-btn">Remove</button>
+                  </div>
+                </div>
+                <input type="text" class="d-none ordered" name="order_img[]" value="{{d}}">
+              </div>
+            </div>
+            {% endif %}
+          {% endfor %}
+          </div>
+          <div class="row mb-5">
+            <div class="col-6 centering mb-5 preview-remove">
+              <button type="button" class="btn add-btn" id="add-text-box">Add Text Box</button>
+            </div>
+            <div class="col-6 centering mb-5 preview-remove">
+              <button type="button" class="btn add-btn" id="add-img-box">Add Media Box</button>
+            </div>
+            <div class="col-12">
+              <hr style="border:2px solid white" class="mb-5">
+            </div>
+            <!-- <div class="col-6 centering">
+                <button type="button" class="btn btn-primary btn-lg preview">PREVIEW</button>
+            </div>
+            <div class="col-6 centering">
+                <button type="submit" class="btn btn-primary btn-lg">SUBMIT</button>
+            </div> -->
+          </div>
+      </form>
+    </div>
+    <div class="col-12 centering mb-4 text-container d-none item" id="text-box">
+      <div class="container">
+        <div class="input-group mb-3">
+          <textarea rows="1" class="form-control text-input" name = "text[]"
+          style="
+          color: #ffffff;
+          font-size:18px;
+          text-align:center;
+          background-color:transparent;
+          border-width: 2px;
+          border-style: solid;
+          border-color: #ffffff;
+          height: 20px"></textarea>
+        </div>
+        <div class="preview-remove">
+          <div class="row">
+            <div class="lg-col-4 col-6">
+              <span class="label-text text-white">Align: &nbsp;</span><br>
+              <select class="attr-value" title="text-align" name="text_align[]">
+                <option value="left">Left</option>
+                <option value="right">Right</option>
+                <option value="center" selected>Middle</option>
+              </select>
+            </div>
+            <div class="lg-col-4 col-6">
+              <span class="label-text text-white">Background Color: &nbsp;</span><br>
+              <input class="attr-value colors-input text-attr" title="background-color" type="text" name="text_bg_color[]" value="transparent">
+            </div>
+            <div class="lg-col-4 col-6">
+              <span class="label-text text-white">Font: &nbsp;</span> <br>
+              <select class="attr-value" title="font-size" name="font_size[]">
+                <option value="4px">4</option>
+                <option value="6px">6</option>
+                <option value="8px">8</option>
+                <option value="10px">10</option>
+                <option value="12px">12</option>
+                <option value="14px">14</option>
+                <option value="16px">16</option>
+                <option value="18px" selected>18</option>
+                <option value="20px">20</option>
+                <option value="22px">22</option>
+                <option value="24px">24</option>
+                <option value="26px">26</option>
+                <option value="28px">28</option>
+                <option value="30px">30</option>
+                <option value="32px">32</option>
+              </select>
+            </div>
+            <div class="lg-col-4 col-6">
+              <span class="label-text text-white">Text Color: &nbsp;</span><br>
+              <input class="attr-value colors-input text-attr" title="color" type="text" name="text_color[]" value="#ffffff">
+            </div>
+            <div class="lg-col-4 col-6">
+              <span class="label-text text-white">Border: &nbsp;</span><br>
+              <select class="attr-value" title="border-style" name="border_style[]">
+                <option value="none">None</option>
+                <option value="solid" selected>Solid</option>
+                <option value="dashed">Dashed</option>
+              </select>
+            </div>
+            <div class="lg-col-4 col-6">
+              <span class="label-text text-white">Border Color: &nbsp;</span><br>
+              <input class="attr-value colors-input text-attr" title="border-color" type="text" name="border_color[]" value="#ffffff">
+            </div>
+            <div class="col-12 centering">
+              <button type="button" name="button" class="btn btn-danger remove-btn mt-3">Remove</button>
+            </div>
+          </div>
+        </div>
+        <input type="text" class="d-none ordered" name="order[]" value="">
+      </div>
+    </div>
+    <div class="col-12 centering mb-4 image-container d-none item" id="img-box">
+      <div class="container text-center">
+        <img src="" class="images mb-3 preview-holder">
+        <div class="input-group mb-3 preview-remove">
+          <div class="d-none">
+            <input type="text" name="image_name[]" value="">
+          </div>
+          <input type="file" class="form-control uploading" aria-label="Upload" name="image[]">
+          <div class="col-12 centering mt-3">
+            <button type="button" name="button" class="btn btn-danger remove-btn">Remove</button>
+          </div>
+        </div>
+        <input type="text" class="d-none ordered" name="order_img[]" value="">
+      </div>
+    </div>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
