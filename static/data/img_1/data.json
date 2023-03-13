@@ -3,8 +3,8 @@
         "border_color": "#ffffff",
         "border_style": "solid",
         "font_size": "18px",
-        "text": "Hello!",
-        "text_align": "center",
+        "text": "Hey Gorgeous\ud83d\udc8b\r\n8 years are too much isn't it?\r\nBut I with you it just doesn't seem enough cz when did this time fly away I couldn't realise but we have a long long run ahead of us and I'm nothing but grateful to share all these life moments with you.\r\nInseparable is an understatement for us. I've said this before and I'll say again \"you lessen my sorrow and double my happiness\" (but irritate me to the peak)\r\n",
+        "text_align": "left",
         "text_bg_color": "#10175c",
         "text_color": "#ffffff",
         "type": "text"
@@ -17,8 +17,8 @@
         "border_color": "#ffffff",
         "border_style": "solid",
         "font_size": "18px",
-        "text": "Happy birthday ",
-        "text_align": "center",
+        "text": "24 ki hogai tu !!\r\nSharam aati h?\r\nYou're not a teen anymore\r\nYou are not even in your early 20's\r\nYou're in your MID 20'S\r\nBut guess what you are going to slay and come out amazing with every passing year\u2764\r\nYou're so brave and pretty \r\nDon't ever lose that beautiful smile\ud83d\udc95\r\n",
+        "text_align": "left",
         "text_bg_color": "#3f084d",
         "text_color": "#e0d361",
         "type": "text"
@@ -26,6 +26,30 @@
     "3": {
         "image_path": "/static/data/img_1/IMG-20220809-WA0113.jpg",
         "type": "image"
+    },
+    "4": {
+        "border_color": "#ffffff",
+        "border_style": "solid",
+        "font_size": "18px",
+        "text": "You're my family\r\nMy best friend \r\nMy cheerleader \r\nMy soul sister\r\nI feel so proud when i look back and see how far we've come and conquered. We're going to be in different countries soon but I'm sure that no amount of distance can cause any hindrance because you're a HABIT NOW AND HAVE BEEN FOR A VERY LONG TIME \r\n",
+        "text_align": "center",
+        "text_bg_color": "#0b3829",
+        "text_color": "#debfdc",
+        "type": "text"
+    },
+    "7": {
+        "image_path": "/static/data/img_1/IMG-20230312-WA0025.jpg",
+        "type": "image"
+    },
+    "8": {
+        "border_color": "#ffffff",
+        "border_style": "solid",
+        "font_size": "18px",
+        "text": "I wish you a very happy birthday babeeee\u2764\u2764\u2764\u2764\u2764\r\nI love you so much\r\nAnd I wish you achieve everything you have ever desired \ud83d\udc99\r\n-Anamika\ud83d\ude3d",
+        "text_align": "center",
+        "text_bg_color": "#4a1414",
+        "text_color": "#b1e0db",
+        "type": "text"
     },
     "bg_color": "#292b2c"
 }

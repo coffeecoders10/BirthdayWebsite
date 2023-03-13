@@ -70,5 +70,23 @@
         "name": "Sakshika  Mishra ",
         "password": "aakuti",
         "user_name": "Sakku"
+    },
+    {
+        "id": 12,
+        "name": "Bade Papa",
+        "password": "Badepapa",
+        "user_name": "Papa"
+    },
+    {
+        "id": 13,
+        "name": "Shashi  Mishra ",
+        "password": "papa",
+        "user_name": "Badepapa"
+    },
+    {
+        "id": 14,
+        "name": "Dhaneshkzmar Mishra",
+        "password": "raniya",
+        "user_name": "Dhanesh"
     }
 ]

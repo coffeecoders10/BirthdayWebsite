@@ -1,0 +1,51 @@
+{
+    "0": {
+        "image_path": "",
+        "type": "image"
+    },
+    "1": {
+        "border_color": "#b37171",
+        "border_style": "dashed",
+        "font_size": "26px",
+        "text": "Happy birthday to my princess.\u2728\ud83d\udc31\ud83c\udf82",
+        "text_align": "center",
+        "text_bg_color": "#6aeba8",
+        "text_color": "#5d0fbd",
+        "type": "text"
+    },
+    "2": {
+        "image_path": "/static/data/img_14/IMG-20230312-WA0021.jpg",
+        "type": "image"
+    },
+    "3": {
+        "image_path": "/static/data/img_14/IMG-20230312-WA0016.jpg",
+        "type": "image"
+    },
+    "4": {
+        "image_path": "/static/data/img_14/IMG-20230312-WA0017.jpg",
+        "type": "image"
+    },
+    "5": {
+        "image_path": "/static/data/img_14/IMG-20230312-WA0018.jpg",
+        "type": "image"
+    },
+    "6": {
+        "image_path": "/static/data/img_14/IMG-20230312-WA0020.jpg",
+        "type": "image"
+    },
+    "7": {
+        "image_path": "/static/data/img_14/IMG-20230312-WA0019.jpg",
+        "type": "image"
+    },
+    "8": {
+        "border_color": "#ffffff",
+        "border_style": "solid",
+        "font_size": "22px",
+        "text": "Thank You for always making me proud !!\u2665\ufe0f ",
+        "text_align": "center",
+        "text_bg_color": "#c98080",
+        "text_color": "#ffffff",
+        "type": "text"
+    },
+    "bg_color": "#3048bf"
+}
